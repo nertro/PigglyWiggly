@@ -9,6 +9,7 @@ public class FarmerMovement : MonoBehaviour {
     Vector3 targetPosition;
     List<Activities> taskList;
     GameObjectAdmin objectAdmin;
+    bool activityStarted;
 
     enum Activities { Cleaning, Feeding, Idle, MoveToPitchfork, MoveToPig, MoveToFood };
     Activities currentActivity;
@@ -18,6 +19,7 @@ public class FarmerMovement : MonoBehaviour {
         targetPosition = this.transform.position;
         currentActivity = Activities.Idle;
         taskList = new List<Activities>();
+        activityStarted = false;
 	}
 
     void Update()
@@ -37,9 +39,9 @@ public class FarmerMovement : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Q))
         {
             taskList.Clear();
-            taskList.Add(Activities.MoveToPitchfork);
+            taskList.Add(Activities.MoveToFood);
             taskList.Add(Activities.MoveToPig);
-            taskList.Add(Activities.Cleaning);
+            taskList.Add(Activities.Feeding);
 
             currentActivity = taskList[0];
             DoTask();
@@ -48,11 +50,10 @@ public class FarmerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
-        Debug.Log(currentActivity);
-        if (currentActivity != Activities.Idle && this.GetComponent<NavMeshAgent>().remainingDistance <= 0.5)
+        if (currentActivity != Activities.Idle && Vector3.Distance(this.transform.position, this.targetPosition) <= 2)
         {
+            Debug.Log(currentActivity);
             taskList.Remove(taskList[0]);
-            currentActivity = Activities.Idle;
 
             this.GetComponent<NavMeshAgent>().Stop();
             this.GetComponent<NavMeshAgent>().updatePosition = false;
@@ -61,10 +62,13 @@ public class FarmerMovement : MonoBehaviour {
 
             if (taskList.Count <= 0)
             {
+                Debug.Log("stop");
+                activityStarted = false;
                 currentActivity = Activities.Idle;
             }
             else
             {
+                currentActivity = taskList[0];
                 DoTask();
             }
         }
@@ -91,6 +95,11 @@ public class FarmerMovement : MonoBehaviour {
         else if (currentActivity == Activities.MoveToFood)
         {
             MoveTo(objectAdmin.food.transform.position);
+        }
+
+        if (!activityStarted)
+        {
+            activityStarted = true;
         }
     }
 
