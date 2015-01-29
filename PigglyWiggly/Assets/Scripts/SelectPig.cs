@@ -15,7 +15,8 @@ public class SelectPig : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetAxis("SelectPigUp"+this.gameObject.name) > 0)
+        if (Input.GetAxis("SelectPigUp"+this.gameObject.name) > 0  || 
+            Input.GetAxis("ControllerSelectPig"+this.gameObject.name) > 0)
         {
             currentPig -= 1;
             if (currentPig < 0)
@@ -24,7 +25,8 @@ public class SelectPig : MonoBehaviour {
             }
         }
 
-        if (Input.GetAxis("SelectPigDown" + this.gameObject.name) > 0)
+        if (Input.GetAxis("SelectPigDown" + this.gameObject.name) > 0 ||
+            Input.GetAxis("ControllerSelectPig" + this.gameObject.name) < 0)
         {
             currentPig += 1;
             if (currentPig == pigs.Count)

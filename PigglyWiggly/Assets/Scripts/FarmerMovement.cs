@@ -25,7 +25,7 @@ public class FarmerMovement : MonoBehaviour {
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetAxis("CleanPig") > 0)
         {
             taskList.Clear();
             taskList.Add(Activities.MoveToPitchfork);
@@ -36,7 +36,7 @@ public class FarmerMovement : MonoBehaviour {
             DoTask();
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetAxis("FeedPig") > 0)
         {
             taskList.Clear();
             taskList.Add(Activities.MoveToFood);
