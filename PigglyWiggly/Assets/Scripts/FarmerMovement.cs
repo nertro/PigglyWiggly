@@ -24,8 +24,9 @@ public class FarmerMovement : MonoBehaviour {
 
     void Update()
     {
+        Pig pig = objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>();
 
-        if (Input.GetAxis("CleanPig") > 0)
+        if (Input.GetAxis("CleanPig") > 0 && pig.isDirty)
         {
             taskList.Clear();
             taskList.Add(Activities.MoveToPitchfork);
@@ -35,8 +36,7 @@ public class FarmerMovement : MonoBehaviour {
             currentActivity = taskList[0];
             DoTask();
         }
-
-        if (Input.GetAxis("FeedPig") > 0)
+        else if (Input.GetAxis("FeedPig") > 0 &! pig.hasFood)
         {
             taskList.Clear();
             taskList.Add(Activities.MoveToFood);
@@ -106,11 +106,13 @@ public class FarmerMovement : MonoBehaviour {
     void Feed()
     {
         Debug.Log("Feed");
+        objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>().hasFood = true;
     }
 
     void Clean()
     {
         Debug.Log("Clean");
+        objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>().isDirty = false;
     }
 
     void MoveTo(Vector3 position)
