@@ -115,7 +115,7 @@ public class Pig : MonoBehaviour {
         else
         {
             sickness++;
-            weight++;
+            weight+=20;
             HandleWeight();
             hasToPoo = true;
         }
@@ -143,32 +143,27 @@ public class Pig : MonoBehaviour {
 
     void HandleWeight()
     {
-        if (weight <= (maxWeight * 20)/100 && scaleBuffer != 5)
+        if (weight <= (maxWeight * 20)/100 && scaleBuffer != 2)
         {
-            Debug.Log(5);
-            scaleBuffer = 5;
+            scaleBuffer = 2;
             this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x / scaleBuffer, gameObject.transform.localScale.y / scaleBuffer, gameObject.transform.localScale.z / scaleBuffer);
         }
-        else if (weight <= (maxWeight * 40) / 100 && weight > (maxWeight * 20) / 100 && scaleBuffer != 4)
+        else if (weight <= (maxWeight * 40) / 100 && weight > (maxWeight * 20) / 100 && scaleBuffer != 1.75f)
         {
-            Debug.Log(4);
             GetBigger();
         }
-        else if (weight <= (maxWeight * 60) / 100 && weight > (maxWeight * 40) / 100 && scaleBuffer != 3)
+        else if (weight <= (maxWeight * 60) / 100 && weight > (maxWeight * 40) / 100 && scaleBuffer != 1.5)
 	    {
-            Debug.Log(3);
             GetBigger();
         }
-        else if (weight <= (maxWeight * 80) / 100 && weight > (maxWeight * 60) / 100 && scaleBuffer != 2)
+        else if (weight <= (maxWeight * 80) / 100 && weight > (maxWeight * 60) / 100 && scaleBuffer != 1.25f)
         {
-            Debug.Log(2);
             GetBigger();    
         }
-        else if (weight <= (maxWeight * 90) / 100 && weight > (maxWeight * 80) / 100 && scaleBuffer != 1.5f)
+        else if (weight <= (maxWeight * 90) / 100 && weight > (maxWeight * 80) / 100 && scaleBuffer != 1.1f)
         {
-            Debug.Log(1);
             this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * scaleBuffer, gameObject.transform.localScale.y * scaleBuffer, gameObject.transform.localScale.z * scaleBuffer);
-            scaleBuffer = 1.5f;
+            scaleBuffer = 1.1f;
             this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x / scaleBuffer, gameObject.transform.localScale.y / scaleBuffer, gameObject.transform.localScale.z / scaleBuffer);
         }
         else if (weight >= maxWeight)
@@ -183,7 +178,7 @@ public class Pig : MonoBehaviour {
     void GetBigger()
     {
         this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * scaleBuffer, gameObject.transform.localScale.y * scaleBuffer, gameObject.transform.localScale.z * scaleBuffer);
-        scaleBuffer --;
+        scaleBuffer -= 0.25f;
         this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x / scaleBuffer, gameObject.transform.localScale.y / scaleBuffer, gameObject.transform.localScale.z / scaleBuffer);
     }
 }

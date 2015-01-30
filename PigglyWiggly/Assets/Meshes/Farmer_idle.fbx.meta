@@ -1,0 +1,222 @@
+fileFormatVersion: 2
+guid: ff04b93eb0cfd8d4188ffb7c7bf70509
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Ankle_Jnt_L2_1
+    100002: Ankle_Jnt_R2_1
+    100004: Farmer1
+    100006: //RootNode
+    100008: Foot_Jnt_L3_1
+    100010: Foot_Jnt_R3_1
+    100012: Head_jnt4_1
+    100014: Hip_jnt
+    100016: joint2
+    100018: joint2 1
+    100020: Joint_Arm_L
+    100022: Joint_Arm_L5
+    100024: Joint_Arm_R
+    100026: Joint_Arm_R5
+    100028: Joint_Elbow_L1_1
+    100030: Joint_Elbow_R1_1
+    100032: Joint_Finger_L4_1
+    100034: Joint_Finger_R4_1
+    100036: Joint_Hand_L3_1
+    100038: Joint_Hand_R3_1
+    100040: joint_Thump_L1
+    100042: joint_Thump_R1
+    100044: Joint_wrist_L2_1
+    100046: Joint_wrist_R2_1
+    100048: Knee_Jnt_L1_1
+    100050: Knee_Jnt_R1_1
+    100052: leg_Jnt_L
+    100054: leg_Jnt_L4
+    100056: leg_Jnt_R
+    100058: leg_Jnt_R4
+    100060: Neck_jnt2_1
+    100062: Neck_jnt3_1
+    100064: Spine_jnt1
+    400000: Ankle_Jnt_L2_1
+    400002: Ankle_Jnt_R2_1
+    400004: Farmer1
+    400006: //RootNode
+    400008: Foot_Jnt_L3_1
+    400010: Foot_Jnt_R3_1
+    400012: Head_jnt4_1
+    400014: Hip_jnt
+    400016: joint2
+    400018: joint2 1
+    400020: Joint_Arm_L
+    400022: Joint_Arm_L5
+    400024: Joint_Arm_R
+    400026: Joint_Arm_R5
+    400028: Joint_Elbow_L1_1
+    400030: Joint_Elbow_R1_1
+    400032: Joint_Finger_L4_1
+    400034: Joint_Finger_R4_1
+    400036: Joint_Hand_L3_1
+    400038: Joint_Hand_R3_1
+    400040: joint_Thump_L1
+    400042: joint_Thump_R1
+    400044: Joint_wrist_L2_1
+    400046: Joint_wrist_R2_1
+    400048: Knee_Jnt_L1_1
+    400050: Knee_Jnt_R1_1
+    400052: leg_Jnt_L
+    400054: leg_Jnt_L4
+    400056: leg_Jnt_R
+    400058: leg_Jnt_R4
+    400060: Neck_jnt2_1
+    400062: Neck_jnt3_1
+    400064: Spine_jnt1
+    4300000: Farmer1
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Farmer1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Farmer1
+        weight: 1
+      - path: Hip_jnt
+        weight: 1
+      - path: Hip_jnt/leg_Jnt_L
+        weight: 1
+      - path: Hip_jnt/leg_Jnt_L/Knee_Jnt_L1_1
+        weight: 1
+      - path: Hip_jnt/leg_Jnt_L/Knee_Jnt_L1_1/Ankle_Jnt_L2_1
+        weight: 1
+      - path: Hip_jnt/leg_Jnt_L/Knee_Jnt_L1_1/Ankle_Jnt_L2_1/Foot_Jnt_L3_1
+        weight: 1
+      - path: Hip_jnt/leg_Jnt_L/Knee_Jnt_L1_1/Ankle_Jnt_L2_1/Foot_Jnt_L3_1/leg_Jnt_L4
+        weight: 1
+      - path: Hip_jnt/leg_Jnt_R
+        weight: 1
+      - path: Hip_jnt/leg_Jnt_R/Knee_Jnt_R1_1
+        weight: 1
+      - path: Hip_jnt/leg_Jnt_R/Knee_Jnt_R1_1/Ankle_Jnt_R2_1
+        weight: 1
+      - path: Hip_jnt/leg_Jnt_R/Knee_Jnt_R1_1/Ankle_Jnt_R2_1/Foot_Jnt_R3_1
+        weight: 1
+      - path: Hip_jnt/leg_Jnt_R/Knee_Jnt_R1_1/Ankle_Jnt_R2_1/Foot_Jnt_R3_1/leg_Jnt_R4
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_L
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_L/Joint_Elbow_L1_1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_L/Joint_Elbow_L1_1/Joint_wrist_L2_1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_L/Joint_Elbow_L1_1/Joint_wrist_L2_1/Joint_Hand_L3_1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_L/Joint_Elbow_L1_1/Joint_wrist_L2_1/Joint_Hand_L3_1/Joint_Finger_L4_1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_L/Joint_Elbow_L1_1/Joint_wrist_L2_1/Joint_Hand_L3_1/Joint_Finger_L4_1/Joint_Arm_L5
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_L/Joint_Elbow_L1_1/Joint_wrist_L2_1/Joint_Hand_L3_1/joint_Thump_L1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_L/Joint_Elbow_L1_1/Joint_wrist_L2_1/Joint_Hand_L3_1/joint_Thump_L1/joint2
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R/Joint_Elbow_R1_1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R/Joint_Elbow_R1_1/Joint_wrist_R2_1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R/Joint_Elbow_R1_1/Joint_wrist_R2_1/Joint_Hand_R3_1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R/Joint_Elbow_R1_1/Joint_wrist_R2_1/Joint_Hand_R3_1/Joint_Finger_R4_1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R/Joint_Elbow_R1_1/Joint_wrist_R2_1/Joint_Hand_R3_1/Joint_Finger_R4_1/Joint_Arm_R5
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R/Joint_Elbow_R1_1/Joint_wrist_R2_1/Joint_Hand_R3_1/joint_Thump_R1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R/Joint_Elbow_R1_1/Joint_wrist_R2_1/Joint_Hand_R3_1/joint_Thump_R1/joint2
+          1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Neck_jnt3_1
+        weight: 1
+      - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Neck_jnt3_1/Head_jnt4_1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .0189999994
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
