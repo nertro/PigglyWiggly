@@ -123,7 +123,7 @@ public class Pig : MonoBehaviour {
         {
             Debug.Log("dead");
             gameObjectAdmin.pigs.Remove(this.gameObject);
-            gameObjectAdmin.score--;
+            gameObjectAdmin.ChangeScore(-1);
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, false);
             Destroy(this.gameObject);
         }
@@ -131,7 +131,7 @@ public class Pig : MonoBehaviour {
         {
             Debug.Log("slaughterhouse");
             gameObjectAdmin.pigs.Remove(this.gameObject);
-            gameObjectAdmin.score++;
+            gameObjectAdmin.ChangeScore(1);
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, true);
             Destroy(this.gameObject);
         }

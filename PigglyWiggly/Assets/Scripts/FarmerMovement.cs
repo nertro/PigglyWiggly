@@ -24,6 +24,8 @@ public class FarmerMovement : MonoBehaviour {
 
     void Update()
     {
+        Debug.Log(objectAdmin.pigs.Count);
+        Debug.Log(this.GetComponent<SelectPig>().currentPig);
         Pig pig = objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>();
 
         if (Input.GetAxis("CleanPig") > 0 && pig.isDirty)
