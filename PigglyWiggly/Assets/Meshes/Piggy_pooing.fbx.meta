@@ -1,0 +1,197 @@
+fileFormatVersion: 2
+guid: 9fae37949f0f6e241828a5940e1957f2
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Hip1
+    100002: jnt_ear_L1
+    100004: jnt_ear_L2
+    100006: jnt_ear_R1
+    100008: jnt_ear_R2
+    100010: jnt_Head1
+    100012: jnt_Hip
+    100014: jnt_mouth
+    100016: jnt_Neck1
+    100018: jnt_Nose
+    100020: jnt_Root
+    100022: jnt_tail
+    100024: jnt_tail1
+    100026: jnt_tail10
+    100028: jnt_tail2
+    100030: jnt_tail3
+    100032: jnt_tail4
+    100034: jnt_tail5
+    100036: jnt_tail6
+    100038: jnt_tail7
+    100040: jnt_tail8
+    100042: jnt_tail9
+    100044: joint2
+    100046: joint3
+    100048: joint5
+    100050: Piggy
+    100052: //RootNode
+    400000: Hip1
+    400002: jnt_ear_L1
+    400004: jnt_ear_L2
+    400006: jnt_ear_R1
+    400008: jnt_ear_R2
+    400010: jnt_Head1
+    400012: jnt_Hip
+    400014: jnt_mouth
+    400016: jnt_Neck1
+    400018: jnt_Nose
+    400020: jnt_Root
+    400022: jnt_tail
+    400024: jnt_tail1
+    400026: jnt_tail10
+    400028: jnt_tail2
+    400030: jnt_tail3
+    400032: jnt_tail4
+    400034: jnt_tail5
+    400036: jnt_tail6
+    400038: jnt_tail7
+    400040: jnt_tail8
+    400042: jnt_tail9
+    400044: joint2
+    400046: joint3
+    400048: joint5
+    400050: Piggy
+    400052: //RootNode
+    4300000: Piggy
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Piggy
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: jnt_Root
+        weight: 1
+      - path: jnt_Root/jnt_Hip
+        weight: 1
+      - path: jnt_Root/jnt_Hip/Hip1
+        weight: 1
+      - path: jnt_Root/jnt_Hip/Hip1/jnt_Neck1
+        weight: 1
+      - path: jnt_Root/jnt_Hip/Hip1/jnt_Neck1/jnt_Head1
+        weight: 1
+      - path: jnt_Root/jnt_Hip/Hip1/jnt_Neck1/jnt_Head1/jnt_ear_L1
+        weight: 1
+      - path: jnt_Root/jnt_Hip/Hip1/jnt_Neck1/jnt_Head1/jnt_ear_L1/jnt_ear_L2
+        weight: 1
+      - path: jnt_Root/jnt_Hip/Hip1/jnt_Neck1/jnt_Head1/jnt_ear_R1
+        weight: 1
+      - path: jnt_Root/jnt_Hip/Hip1/jnt_Neck1/jnt_Head1/jnt_ear_R1/jnt_ear_R2
+        weight: 1
+      - path: jnt_Root/jnt_Hip/Hip1/jnt_Neck1/jnt_Head1/jnt_mouth
+        weight: 1
+      - path: jnt_Root/jnt_Hip/Hip1/jnt_Neck1/jnt_Head1/jnt_mouth/joint5
+        weight: 1
+      - path: jnt_Root/jnt_Hip/Hip1/jnt_Neck1/jnt_Head1/jnt_Nose
+        weight: 1
+      - path: jnt_Root/jnt_Hip/Hip1/jnt_Neck1/jnt_Head1/jnt_Nose/joint2
+        weight: 1
+      - path: jnt_Root/jnt_Hip/Hip1/jnt_Neck1/jnt_Head1/jnt_Nose/joint2/joint3
+        weight: 1
+      - path: jnt_Root/jnt_Hip/jnt_tail
+        weight: 1
+      - path: jnt_Root/jnt_Hip/jnt_tail/jnt_tail1
+        weight: 1
+      - path: jnt_Root/jnt_Hip/jnt_tail/jnt_tail1/jnt_tail2
+        weight: 1
+      - path: jnt_Root/jnt_Hip/jnt_tail/jnt_tail1/jnt_tail2/jnt_tail3
+        weight: 1
+      - path: jnt_Root/jnt_Hip/jnt_tail/jnt_tail1/jnt_tail2/jnt_tail3/jnt_tail4
+        weight: 1
+      - path: jnt_Root/jnt_Hip/jnt_tail/jnt_tail1/jnt_tail2/jnt_tail3/jnt_tail4/jnt_tail5
+        weight: 1
+      - path: jnt_Root/jnt_Hip/jnt_tail/jnt_tail1/jnt_tail2/jnt_tail3/jnt_tail4/jnt_tail5/jnt_tail6
+        weight: 1
+      - path: jnt_Root/jnt_Hip/jnt_tail/jnt_tail1/jnt_tail2/jnt_tail3/jnt_tail4/jnt_tail5/jnt_tail6/jnt_tail7
+        weight: 1
+      - path: jnt_Root/jnt_Hip/jnt_tail/jnt_tail1/jnt_tail2/jnt_tail3/jnt_tail4/jnt_tail5/jnt_tail6/jnt_tail7/jnt_tail8
+        weight: 1
+      - path: jnt_Root/jnt_Hip/jnt_tail/jnt_tail1/jnt_tail2/jnt_tail3/jnt_tail4/jnt_tail5/jnt_tail6/jnt_tail7/jnt_tail8/jnt_tail9
+        weight: 1
+      - path: jnt_Root/jnt_Hip/jnt_tail/jnt_tail1/jnt_tail2/jnt_tail3/jnt_tail4/jnt_tail5/jnt_tail6/jnt_tail7/jnt_tail8/jnt_tail9/jnt_tail10
+        weight: 1
+      - path: Piggy
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

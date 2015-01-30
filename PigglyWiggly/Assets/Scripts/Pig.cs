@@ -4,6 +4,7 @@ using System.Collections;
 public class Pig : MonoBehaviour {
 
     GameObjectAdmin gameObjectAdmin;
+    Animator anim;
 
     int hunger, weight;
     float sickness;
@@ -20,6 +21,7 @@ public class Pig : MonoBehaviour {
     public int ID;
 
 	void Start () {
+        anim = this.GetComponent<Animator>();
         gameObjectAdmin = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameObjectAdmin>();
         hunger = 5;
         weight = 0;
@@ -44,10 +46,12 @@ public class Pig : MonoBehaviour {
     {
         if (hunger != 0)
         {
+            anim.SetBool("eating", true);
             hunger--;
         }
         else
         {
+            anim.SetBool("eating", false);
             eating = false;
         }
     }
@@ -56,10 +60,12 @@ public class Pig : MonoBehaviour {
     {
         if (hunger != maxHunger/2)
         {
+            anim.SetBool("pooping", true);
             hunger++;
         }
         else
         {
+            anim.SetBool("pooping", false);
             pooping = false;
             isDirty = true;
         }
@@ -89,9 +95,9 @@ public class Pig : MonoBehaviour {
                 HandlePigLife();
             }
 
-            Debug.Log("hun" + hunger);
-            Debug.Log("sick" + sickness);
-            Debug.Log("wight" + weight);
+            //Debug.Log("hun" + hunger);
+            //Debug.Log("sick" + sickness);
+            //Debug.Log("wight" + weight);
         }
     }
 

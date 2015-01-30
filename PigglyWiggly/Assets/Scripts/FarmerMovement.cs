@@ -11,11 +11,13 @@ public class FarmerMovement : MonoBehaviour {
     GameObjectAdmin objectAdmin;
     bool activityStarted;
     GameObject pigTakingCareOf;
+    Animator anim;
 
     enum Activities { Cleaning, Feeding, Idle, MoveToPitchfork, MoveToPig, MoveToFood };
     Activities currentActivity;
 
 	void Start () {
+        anim = this.GetComponent<Animator>();
         objectAdmin = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameObjectAdmin>();
         targetPosition = this.transform.position;
         currentActivity = Activities.Idle;
@@ -69,7 +71,7 @@ public class FarmerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (currentActivity != Activities.Idle && Vector3.Distance(this.transform.position, this.targetPosition) <= 2.2)
+        if (currentActivity != Activities.Idle && Vector3.Distance(this.transform.position, this.targetPosition) <= 2.7f)
         {
             Debug.Log(currentActivity);
             taskList.Remove(taskList[0]);
@@ -77,6 +79,8 @@ public class FarmerMovement : MonoBehaviour {
             this.GetComponent<NavMeshAgent>().Stop();
             this.GetComponent<NavMeshAgent>().updatePosition = false;
             this.GetComponent<NavMeshAgent>().updateRotation = false;
+
+            anim.SetBool("moving", false);
             Debug.Log("Bumm");
 
             if (taskList.Count <= 0)
@@ -141,5 +145,7 @@ public class FarmerMovement : MonoBehaviour {
         this.GetComponent<NavMeshAgent>().updatePosition = true;
         this.GetComponent<NavMeshAgent>().updateRotation = true;
         this.GetComponent<NavMeshAgent>().SetDestination(targetPosition);
+        anim.SetBool("moving", true);
+
     }
 }

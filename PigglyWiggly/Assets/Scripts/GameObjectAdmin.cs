@@ -8,6 +8,7 @@ public class GameObjectAdmin : MonoBehaviour {
     public GameObject food;
     public GameObject pitchfork;
     public GameObject scoreLabel;
+    public GameObject SoundManager;
     int score;
 
     void Awake()
