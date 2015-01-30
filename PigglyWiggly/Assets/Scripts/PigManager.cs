@@ -5,38 +5,74 @@ using System.Collections.Generic;
 public class PigManager : MonoBehaviour {
 
     public GameObject pigPrefab;
+    public Vector3 BottomPosition;
+
     public int currentPigCount;
     public int maxPigsRight;
     public int maxPigsBottom;
-    public int gap;
+    public float gap;
 
-    Vector3[] pigRightSpawnPositions;
-    Vector3[] pigBottomSpawnPositions;
+    Vector3[] pigSpawnPositions;
 
 	void Start () {
-        pigRightSpawnPositions = new Vector3[maxPigsRight];
-        for (int i = 0; i < maxPigsRight; i++)
+        pigSpawnPositions = new Vector3[maxPigsRight + maxPigsBottom];
+        for (int i = 0; i < pigSpawnPositions.Length; i++)
         {
-            pigRightSpawnPositions[i] = new Vector3(pigPrefab.transform.position.x, pigPrefab.transform.position.y, pigPrefab.transform.position.z + pigPrefab.transform.localScale.z * i + gap * i);
+            if (i < maxPigsRight)
+            {
+                pigSpawnPositions[i] = new Vector3(pigPrefab.transform.position.x, pigPrefab.transform.position.y, pigPrefab.transform.position.z + pigPrefab.transform.lossyScale.z * i + gap * i);
+            }
+            else
+            {
+                pigSpawnPositions[i] = new Vector3(BottomPosition.x + pigPrefab.transform.lossyScale.x * i + gap * i, BottomPosition.y, BottomPosition.z);
+            }
         }
+
+
         this.GetComponent<GameObjectAdmin>().pigs = new List<GameObject>();
 
-        SpawnPig(0, false);
-        currentPigCount++;
+        SpawnPig(0, false, false);
 	}
 
-    public void SpawnPig(int spawnPointID, bool spawnTwo)
+    public void SpawnPig(int spawnPointID, bool spawnTwo, bool bottomPig)
     {
-        GameObject pig = Instantiate(pigPrefab, pigRightSpawnPositions[spawnPointID], pigPrefab.transform.rotation) as GameObject;
+        currentPigCount--;
+
+        Quaternion rotation = Quaternion.identity;
+        if (!bottomPig)
+        {
+            rotation = pigPrefab.transform.rotation;
+        }
+
+        GameObject pig = Instantiate(pigPrefab, pigSpawnPositions[spawnPointID], rotation) as GameObject;
         this.GetComponent<GameObjectAdmin>().pigs.Add(pig);
         pig.GetComponent<Pig>().ID = spawnPointID;
-
-        if (spawnTwo && currentPigCount < maxPigsRight)
+        if (bottomPig)
         {
+            pig.GetComponent<Pig>().bottomPig = true;
+        }
+        else
+        {
+            pig.GetComponent<Pig>().bottomPig = false;
+        }
+
+        currentPigCount++;
+
+        if (spawnTwo && currentPigCount < pigSpawnPositions.Length)
+        {
+            if (currentPigCount >= maxPigsRight)
+            {
+                rotation = Quaternion.identity;
+            }
             this.GetComponent<GameObjectAdmin>().SoundManager.GetComponent<HandleSoundClips>().playnext = true;
-            pig = Instantiate(pigPrefab, pigRightSpawnPositions[currentPigCount - 1], pigPrefab.transform.rotation) as GameObject;
+            pig = Instantiate(pigPrefab, pigSpawnPositions[currentPigCount], rotation) as GameObject;
             this.GetComponent<GameObjectAdmin>().pigs.Add(pig);
             pig.GetComponent<Pig>().ID = currentPigCount;
+            if (currentPigCount >= maxPigsRight)
+            {
+                pig.GetComponent<Pig>().bottomPig = true;
+            }
+
             currentPigCount++;
         }
     }

@@ -19,6 +19,7 @@ public class Pig : MonoBehaviour {
     public bool isDirty;
     public bool hasToPoo;
     public int ID;
+    public bool bottomPig;
 
 	void Start () {
         anim = this.GetComponent<Animator>();
@@ -39,7 +40,9 @@ public class Pig : MonoBehaviour {
 
 	void Update () {
         timer += Time.deltaTime;
-        ChangeStates();
+        //ChangeStates();
+        weight += 250;
+        HandlePigLife();
     }
 
     void Eat()
@@ -134,15 +137,15 @@ public class Pig : MonoBehaviour {
             Debug.Log("dead");
             gameObjectAdmin.pigs.Remove(this.gameObject);
             gameObjectAdmin.ChangeScore(-1);
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, false);
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, false, bottomPig);
             Destroy(this.gameObject);
         }
         else if (weight >= maxWeight)
         {
             Debug.Log("slaughterhouse");
             gameObjectAdmin.pigs.Remove(this.gameObject);
-            gameObjectAdmin.ChangeScore(1);
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, true);
+            gameObjectAdmin.ChangeScore(2);
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, true, bottomPig);
             Destroy(this.gameObject);
         }
     }
