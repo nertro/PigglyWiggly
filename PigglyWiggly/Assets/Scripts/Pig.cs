@@ -10,6 +10,7 @@ public class Pig : MonoBehaviour {
     int maxHunger, maxWeight, maxSickness;
     float timer;
     float delay;
+    float scaleBuffer;
 
     public bool pooping;
     public bool eating;
@@ -25,15 +26,17 @@ public class Pig : MonoBehaviour {
         sickness = 0;
         maxHunger = 10;
         maxSickness = 10;
-        maxWeight = 50;
+        maxWeight = 500;
         timer = 0;
         delay = 2;
         pooping = hasFood = eating = isDirty = false;
+        scaleBuffer = 0;
+
+        HandleWeight();
 	}
 
 	void Update () {
         timer += Time.deltaTime;
-        weight++;
         ChangeStates();
     }
 
@@ -113,6 +116,7 @@ public class Pig : MonoBehaviour {
         {
             sickness++;
             weight++;
+            HandleWeight();
             hasToPoo = true;
         }
     }
@@ -137,4 +141,49 @@ public class Pig : MonoBehaviour {
         }
     }
 
+    void HandleWeight()
+    {
+        if (weight <= (maxWeight * 20)/100 && scaleBuffer != 5)
+        {
+            Debug.Log(5);
+            scaleBuffer = 5;
+            this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x / scaleBuffer, gameObject.transform.localScale.y / scaleBuffer, gameObject.transform.localScale.z / scaleBuffer);
+        }
+        else if (weight <= (maxWeight * 40) / 100 && weight > (maxWeight * 20) / 100 && scaleBuffer != 4)
+        {
+            Debug.Log(4);
+            GetBigger();
+        }
+        else if (weight <= (maxWeight * 60) / 100 && weight > (maxWeight * 40) / 100 && scaleBuffer != 3)
+	    {
+            Debug.Log(3);
+            GetBigger();
+        }
+        else if (weight <= (maxWeight * 80) / 100 && weight > (maxWeight * 60) / 100 && scaleBuffer != 2)
+        {
+            Debug.Log(2);
+            GetBigger();    
+        }
+        else if (weight <= (maxWeight * 90) / 100 && weight > (maxWeight * 80) / 100 && scaleBuffer != 1.5f)
+        {
+            Debug.Log(1);
+            this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * scaleBuffer, gameObject.transform.localScale.y * scaleBuffer, gameObject.transform.localScale.z * scaleBuffer);
+            scaleBuffer = 1.5f;
+            this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x / scaleBuffer, gameObject.transform.localScale.y / scaleBuffer, gameObject.transform.localScale.z / scaleBuffer);
+        }
+        else if (weight >= maxWeight)
+        {
+            Debug.Log(0);
+            this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * scaleBuffer, gameObject.transform.localScale.y * scaleBuffer, gameObject.transform.localScale.z * scaleBuffer);
+            scaleBuffer = 0;
+        }
+    }
+
+
+    void GetBigger()
+    {
+        this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * scaleBuffer, gameObject.transform.localScale.y * scaleBuffer, gameObject.transform.localScale.z * scaleBuffer);
+        scaleBuffer --;
+        this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x / scaleBuffer, gameObject.transform.localScale.y / scaleBuffer, gameObject.transform.localScale.z / scaleBuffer);
+    }
 }

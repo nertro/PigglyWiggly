@@ -9,12 +9,13 @@ public class SelectPig : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        pigs = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameObjectAdmin>().pigs;
+        
         currentPig = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        pigs = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameObjectAdmin>().pigs;
         if (Input.GetAxis("SelectPigUp"+this.gameObject.name) > 0  || 
             Input.GetAxis("ControllerSelectPig"+this.gameObject.name) > 0)
         {

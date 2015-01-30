@@ -12,7 +12,7 @@ public class GameObjectAdmin : MonoBehaviour {
 
     void Awake()
     {
-        pigs = new List<GameObject>();
+        
     }
 
 	void Start () {

@@ -24,29 +24,31 @@ public class FarmerMovement : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(objectAdmin.pigs.Count);
-        Debug.Log(this.GetComponent<SelectPig>().currentPig);
-        Pig pig = objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>();
 
-        if (Input.GetAxis("CleanPig") > 0 && pig.isDirty)
+        if (this.GetComponent<SelectPig>().currentPig < objectAdmin.pigs.Count)
         {
-            taskList.Clear();
-            taskList.Add(Activities.MoveToPitchfork);
-            taskList.Add(Activities.MoveToPig);
-            taskList.Add(Activities.Cleaning);
+            Pig pig = objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>();
 
-            currentActivity = taskList[0];
-            DoTask();
-        }
-        else if (Input.GetAxis("FeedPig") > 0 &! pig.hasFood)
-        {
-            taskList.Clear();
-            taskList.Add(Activities.MoveToFood);
-            taskList.Add(Activities.MoveToPig);
-            taskList.Add(Activities.Feeding);
+            if (Input.GetAxis("CleanPig") > 0 && pig.isDirty)
+            {
+                taskList.Clear();
+                taskList.Add(Activities.MoveToPitchfork);
+                taskList.Add(Activities.MoveToPig);
+                taskList.Add(Activities.Cleaning);
 
-            currentActivity = taskList[0];
-            DoTask();
+                currentActivity = taskList[0];
+                DoTask();
+            }
+            else if (Input.GetAxis("FeedPig") > 0 & !pig.hasFood)
+            {
+                taskList.Clear();
+                taskList.Add(Activities.MoveToFood);
+                taskList.Add(Activities.MoveToPig);
+                taskList.Add(Activities.Feeding);
+
+                currentActivity = taskList[0];
+                DoTask();
+            }
         }
     }
 
