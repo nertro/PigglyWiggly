@@ -15,6 +15,7 @@ public class PigManager : MonoBehaviour {
 
     Vector3[] pigSpawnPositions;
 
+
 	void Start () {
         pigSpawnPositions = new Vector3[maxPigsRight + maxPigsBottom];
         for (int i = 0; i < pigSpawnPositions.Length; i++)

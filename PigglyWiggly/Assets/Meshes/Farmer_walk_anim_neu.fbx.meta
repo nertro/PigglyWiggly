@@ -1,78 +1,75 @@
 fileFormatVersion: 2
-guid: ff04b93eb0cfd8d4188ffb7c7bf70509
+guid: d7e3a3eb6750c5549aa36adc7a766fc7
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: Ankle_Jnt_L2_1
     100002: Ankle_Jnt_R2_1
-    100004: Farmer1
-    100006: //RootNode
-    100008: Foot_Jnt_L3_1
-    100010: Foot_Jnt_R3_1
-    100012: Head_jnt4_1
-    100014: Hip_jnt
-    100016: joint2
-    100018: joint2 1
-    100020: Joint_Arm_L
-    100022: Joint_Arm_L5
-    100024: Joint_Arm_R
-    100026: Joint_Arm_R5
-    100028: Joint_Elbow_L1_1
-    100030: Joint_Elbow_R1_1
-    100032: Joint_Finger_L4_1
-    100034: Joint_Finger_R4_1
-    100036: Joint_Hand_L3_1
-    100038: Joint_Hand_R3_1
-    100040: joint_Thump_L1
-    100042: joint_Thump_R1
-    100044: Joint_wrist_L2_1
-    100046: Joint_wrist_R2_1
-    100048: Knee_Jnt_L1_1
-    100050: Knee_Jnt_R1_1
-    100052: leg_Jnt_L
-    100054: leg_Jnt_L4
-    100056: leg_Jnt_R
-    100058: leg_Jnt_R4
-    100060: Neck_jnt2_1
-    100062: Neck_jnt3_1
-    100064: Spine_jnt1
+    100004: //RootNode
+    100006: Foot_Jnt_L3_1
+    100008: Foot_Jnt_R3_1
+    100010: Head_jnt4_1
+    100012: Hip_jnt
+    100014: joint2
+    100016: joint2 1
+    100018: Joint_Arm_L
+    100020: Joint_Arm_L5
+    100022: Joint_Arm_R
+    100024: Joint_Arm_R5
+    100026: Joint_Elbow_L1_1
+    100028: Joint_Elbow_R1_1
+    100030: Joint_Finger_L4_1
+    100032: Joint_Finger_R4_1
+    100034: Joint_Hand_L3_1
+    100036: Joint_Hand_R3_1
+    100038: joint_Thump_L1
+    100040: joint_Thump_R1
+    100042: Joint_wrist_L2_1
+    100044: Joint_wrist_R2_1
+    100046: Knee_Jnt_L1_1
+    100048: Knee_Jnt_R1_1
+    100050: leg_Jnt_L
+    100052: leg_Jnt_L4
+    100054: leg_Jnt_R
+    100056: leg_Jnt_R4
+    100058: Neck_jnt2_1
+    100060: Neck_jnt3_1
+    100062: Spine_jnt1
     400000: Ankle_Jnt_L2_1
     400002: Ankle_Jnt_R2_1
-    400004: Farmer1
-    400006: //RootNode
-    400008: Foot_Jnt_L3_1
-    400010: Foot_Jnt_R3_1
-    400012: Head_jnt4_1
-    400014: Hip_jnt
-    400016: joint2
-    400018: joint2 1
-    400020: Joint_Arm_L
-    400022: Joint_Arm_L5
-    400024: Joint_Arm_R
-    400026: Joint_Arm_R5
-    400028: Joint_Elbow_L1_1
-    400030: Joint_Elbow_R1_1
-    400032: Joint_Finger_L4_1
-    400034: Joint_Finger_R4_1
-    400036: Joint_Hand_L3_1
-    400038: Joint_Hand_R3_1
-    400040: joint_Thump_L1
-    400042: joint_Thump_R1
-    400044: Joint_wrist_L2_1
-    400046: Joint_wrist_R2_1
-    400048: Knee_Jnt_L1_1
-    400050: Knee_Jnt_R1_1
-    400052: leg_Jnt_L
-    400054: leg_Jnt_L4
-    400056: leg_Jnt_R
-    400058: leg_Jnt_R4
-    400060: Neck_jnt2_1
-    400062: Neck_jnt3_1
-    400064: Spine_jnt1
-    4300000: Farmer1
+    400004: //RootNode
+    400006: Foot_Jnt_L3_1
+    400008: Foot_Jnt_R3_1
+    400010: Head_jnt4_1
+    400012: Hip_jnt
+    400014: joint2
+    400016: joint2 1
+    400018: Joint_Arm_L
+    400020: Joint_Arm_L5
+    400022: Joint_Arm_R
+    400024: Joint_Arm_R5
+    400026: Joint_Elbow_L1_1
+    400028: Joint_Elbow_R1_1
+    400030: Joint_Finger_L4_1
+    400032: Joint_Finger_R4_1
+    400034: Joint_Hand_L3_1
+    400036: Joint_Hand_R3_1
+    400038: joint_Thump_L1
+    400040: joint_Thump_R1
+    400042: Joint_wrist_L2_1
+    400044: Joint_wrist_R2_1
+    400046: Knee_Jnt_L1_1
+    400048: Knee_Jnt_R1_1
+    400050: leg_Jnt_L
+    400052: leg_Jnt_L4
+    400054: leg_Jnt_R
+    400056: leg_Jnt_R4
+    400058: Neck_jnt2_1
+    400060: Neck_jnt3_1
+    400062: Spine_jnt1
     7400000: Take 001
     9500000: //RootNode
-    13700000: Farmer1
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -93,7 +90,7 @@ ModelImporter:
       name: Take 001
       takeName: Take 001
       firstFrame: 2
-      lastFrame: 120
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -115,8 +112,6 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: Farmer1
-        weight: 1
       - path: Hip_jnt
         weight: 1
       - path: Hip_jnt/leg_Jnt_L
@@ -128,7 +123,7 @@ ModelImporter:
       - path: Hip_jnt/leg_Jnt_L/Knee_Jnt_L1_1/Ankle_Jnt_L2_1/Foot_Jnt_L3_1
         weight: 1
       - path: Hip_jnt/leg_Jnt_L/Knee_Jnt_L1_1/Ankle_Jnt_L2_1/Foot_Jnt_L3_1/leg_Jnt_L4
-        weight: 1
+        weight: 0
       - path: Hip_jnt/leg_Jnt_R
         weight: 1
       - path: Hip_jnt/leg_Jnt_R/Knee_Jnt_R1_1
@@ -138,7 +133,7 @@ ModelImporter:
       - path: Hip_jnt/leg_Jnt_R/Knee_Jnt_R1_1/Ankle_Jnt_R2_1/Foot_Jnt_R3_1
         weight: 1
       - path: Hip_jnt/leg_Jnt_R/Knee_Jnt_R1_1/Ankle_Jnt_R2_1/Foot_Jnt_R3_1/leg_Jnt_R4
-        weight: 1
+        weight: 0
       - path: Hip_jnt/Spine_jnt1
         weight: 1
       - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1
@@ -154,7 +149,7 @@ ModelImporter:
       - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_L/Joint_Elbow_L1_1/Joint_wrist_L2_1/Joint_Hand_L3_1/Joint_Finger_L4_1
         weight: 1
       - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_L/Joint_Elbow_L1_1/Joint_wrist_L2_1/Joint_Hand_L3_1/Joint_Finger_L4_1/Joint_Arm_L5
-        weight: 1
+        weight: 0
       - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_L/Joint_Elbow_L1_1/Joint_wrist_L2_1/Joint_Hand_L3_1/joint_Thump_L1
         weight: 1
       - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_L/Joint_Elbow_L1_1/Joint_wrist_L2_1/Joint_Hand_L3_1/joint_Thump_L1/joint2
@@ -166,16 +161,16 @@ ModelImporter:
       - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R/Joint_Elbow_R1_1/Joint_wrist_R2_1
         weight: 1
       - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R/Joint_Elbow_R1_1/Joint_wrist_R2_1/Joint_Hand_R3_1
-        weight: 1
+        weight: 0
       - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R/Joint_Elbow_R1_1/Joint_wrist_R2_1/Joint_Hand_R3_1/Joint_Finger_R4_1
-        weight: 1
+        weight: 0
       - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R/Joint_Elbow_R1_1/Joint_wrist_R2_1/Joint_Hand_R3_1/Joint_Finger_R4_1/Joint_Arm_R5
-        weight: 1
+        weight: 0
       - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R/Joint_Elbow_R1_1/Joint_wrist_R2_1/Joint_Hand_R3_1/joint_Thump_R1
-        weight: 1
+        weight: 0
       - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Joint_Arm_R/Joint_Elbow_R1_1/Joint_wrist_R2_1/Joint_Hand_R3_1/joint_Thump_R1/joint2
           1
-        weight: 1
+        weight: 0
       - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Neck_jnt3_1
         weight: 1
       - path: Hip_jnt/Spine_jnt1/Neck_jnt2_1/Neck_jnt3_1/Head_jnt4_1
@@ -185,7 +180,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .0189999994
+    globalScale: .00999999978
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -204,7 +199,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 1
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     human:
     - boneName: Hip_jnt
@@ -541,7 +536,8 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: ff04b93eb0cfd8d4188ffb7c7bf70509,
+    type: 3}
   animationType: 3
   additionalBone: 0
   userData: 

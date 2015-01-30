@@ -40,9 +40,7 @@ public class Pig : MonoBehaviour {
 
 	void Update () {
         timer += Time.deltaTime;
-        //ChangeStates();
-        weight += 1;
-        HandlePigLife();
+        ChangeStates();
     }
 
     void Eat()
@@ -61,10 +59,10 @@ public class Pig : MonoBehaviour {
 
     void Poop()
     {
-        if (hunger != maxHunger/2)
+        if (hunger > maxHunger/2)
         {
             anim.SetBool("pooping", true);
-            hunger++;
+            hunger+=2;
         }
         else
         {
@@ -97,10 +95,6 @@ public class Pig : MonoBehaviour {
                 HandleHunger();
                 HandlePigLife();
             }
-
-            //Debug.Log("hun" + hunger);
-            //Debug.Log("sick" + sickness);
-            //Debug.Log("wight" + weight);
         }
     }
 
