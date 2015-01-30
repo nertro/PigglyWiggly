@@ -11,6 +11,7 @@ public class PigManager : MonoBehaviour {
     public int maxPigsRight;
     public int maxPigsBottom;
     public float gap;
+    public float bottomGap;
 
     Vector3[] pigSpawnPositions;
 
@@ -20,17 +21,19 @@ public class PigManager : MonoBehaviour {
         {
             if (i < maxPigsRight)
             {
-                pigSpawnPositions[i] = new Vector3(pigPrefab.transform.position.x, pigPrefab.transform.position.y, pigPrefab.transform.position.z + pigPrefab.transform.lossyScale.z * i + gap * i);
+                pigSpawnPositions[i] = new Vector3(pigPrefab.transform.position.x, pigPrefab.transform.position.y, pigPrefab.transform.position.z - pigPrefab.transform.lossyScale.z * i - gap * i);
+                Debug.Log(pigSpawnPositions[i]);
             }
             else
             {
-                pigSpawnPositions[i] = new Vector3(BottomPosition.x + pigPrefab.transform.lossyScale.x * i + gap * i, BottomPosition.y, BottomPosition.z);
+                pigSpawnPositions[i] = new Vector3(BottomPosition.x - bottomGap * i, BottomPosition.y, BottomPosition.z);
             }
         }
 
 
         this.GetComponent<GameObjectAdmin>().pigs = new List<GameObject>();
 
+        currentPigCount = 1;
         SpawnPig(0, false, false);
 	}
 
@@ -60,6 +63,7 @@ public class PigManager : MonoBehaviour {
 
         if (spawnTwo && currentPigCount < pigSpawnPositions.Length)
         {
+            Debug.Log("spawnSecond");
             if (currentPigCount >= maxPigsRight)
             {
                 rotation = Quaternion.identity;

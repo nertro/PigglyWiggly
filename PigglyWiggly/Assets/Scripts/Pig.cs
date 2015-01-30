@@ -41,7 +41,7 @@ public class Pig : MonoBehaviour {
 	void Update () {
         timer += Time.deltaTime;
         //ChangeStates();
-        weight += 250;
+        weight += 1;
         HandlePigLife();
     }
 
