@@ -4,6 +4,7 @@ using System.Collections;
 public class Pig : MonoBehaviour {
 
     GameObjectAdmin gameObjectAdmin;
+    PigLook pigLook;
     Animator anim;
 
     int hunger, weight;
@@ -20,10 +21,12 @@ public class Pig : MonoBehaviour {
     public bool hasToPoo;
     public int ID;
     public bool bottomPig;
+    public Material mat;
 
 	void Start () {
         anim = this.GetComponent<Animator>();
         gameObjectAdmin = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameObjectAdmin>();
+        pigLook = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigLook>();
         hunger = 5;
         weight = 0;
         sickness = 0;
@@ -95,6 +98,9 @@ public class Pig : MonoBehaviour {
                 HandleHunger();
                 HandlePigLife();
             }
+
+            GetComponentInChildren<SkinnedMeshRenderer>().material.SetTexture(0, pigLook.ChangePigLook(isDirty, hunger, sickness));
+            //mat.SetTexture(0, pigLook.ChangePigLook(isDirty, hunger, sickness));
         }
     }
 
