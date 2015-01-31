@@ -16,6 +16,7 @@ public class PigPlayer : MonoBehaviour {
             if (pig.hasFood)
             {
                 pig.eating = true;
+                pig.Eat();
             }
         }
         else if (Input.GetAxis("Poop") > 0)
@@ -24,6 +25,7 @@ public class PigPlayer : MonoBehaviour {
             if (pig.hasToPoo)
             {
                 pig.pooping = true;
+                pig.Poop();
             }
         }
 	}

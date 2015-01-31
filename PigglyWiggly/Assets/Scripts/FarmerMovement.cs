@@ -35,35 +35,37 @@ public class FarmerMovement : MonoBehaviour {
             this.GetComponent<NavMeshAgent>().updateRotation = false;
             currentActivity = Activities.Idle;
         }
-        if (this.GetComponent<SelectPig>().currentPig < objectAdmin.pigs.Count)
+        if (this.GetComponent<SelectPig>().currentPig < objectAdmin.pigs.Length)
         {
             Pig pig = objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>();
-
-            if (currentActivity == Activities.Idle)
+            if (pig)
             {
-                if (Input.GetAxis("CleanPig") > 0 && pig.isDirty)
+                if (currentActivity == Activities.Idle)
                 {
-                    pigTakingCareOf = pig.gameObject;
+                    if (Input.GetAxis("CleanPig") > 0 && pig.isDirty)
+                    {
+                        pigTakingCareOf = pig.gameObject;
 
-                    taskList.Clear();
-                    taskList.Add(Activities.MoveToPitchfork);
-                    taskList.Add(Activities.MoveToPig);
-                    taskList.Add(Activities.Cleaning);
+                        taskList.Clear();
+                        taskList.Add(Activities.MoveToPitchfork);
+                        taskList.Add(Activities.MoveToPig);
+                        taskList.Add(Activities.Cleaning);
 
-                    currentActivity = taskList[0];
-                    DoTask();
-                }
-                else if (Input.GetAxis("FeedPig") > 0 & !pig.hasFood)
-                {
-                    pigTakingCareOf = pig.gameObject;
+                        currentActivity = taskList[0];
+                        DoTask();
+                    }
+                    else if (Input.GetAxis("FeedPig") > 0 & !pig.hasFood)
+                    {
+                        pigTakingCareOf = pig.gameObject;
 
-                    taskList.Clear();
-                    taskList.Add(Activities.MoveToFood);
-                    taskList.Add(Activities.MoveToPig);
-                    taskList.Add(Activities.Feeding);
+                        taskList.Clear();
+                        taskList.Add(Activities.MoveToFood);
+                        taskList.Add(Activities.MoveToPig);
+                        taskList.Add(Activities.Feeding);
 
-                    currentActivity = taskList[0];
-                    DoTask();
+                        currentActivity = taskList[0];
+                        DoTask();
+                    }
                 }
             }
         }
@@ -71,9 +73,17 @@ public class FarmerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (currentActivity != Activities.Idle && Vector3.Distance(this.transform.position, this.targetPosition) <= 2.7f)
+        if (currentActivity != Activities.Idle && Vector3.Distance(this.transform.position, this.targetPosition) <= 2f)
         {
-            Debug.Log(currentActivity);
+            if (currentActivity == Activities.MoveToFood)
+            {
+                this.GetComponent<FarmerSoundManager>().PlayHaySound();
+            }
+            else if(currentActivity == Activities.MoveToPitchfork)
+            {
+                this.GetComponent<FarmerSoundManager>().PlayForkSound();
+            }
+
             taskList.Remove(taskList[0]);
 
             this.GetComponent<NavMeshAgent>().Stop();
@@ -131,6 +141,7 @@ public class FarmerMovement : MonoBehaviour {
     {
         Debug.Log("Feed");
         objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>().hasFood = true;
+        this.GetComponent<FarmerSoundManager>().PlayFeedSound();
     }
 
     void Clean()

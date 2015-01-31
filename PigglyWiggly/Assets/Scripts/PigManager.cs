@@ -32,7 +32,7 @@ public class PigManager : MonoBehaviour {
         }
 
 
-        this.GetComponent<GameObjectAdmin>().pigs = new List<GameObject>();
+        this.GetComponent<GameObjectAdmin>().pigs = new GameObject[maxPigsRight + maxPigsBottom];
 
         currentPigCount = 1;
         SpawnPig(0, false, false);
@@ -49,7 +49,7 @@ public class PigManager : MonoBehaviour {
         }
 
         GameObject pig = Instantiate(pigPrefab, pigSpawnPositions[spawnPointID], rotation) as GameObject;
-        this.GetComponent<GameObjectAdmin>().pigs.Add(pig);
+        this.GetComponent<GameObjectAdmin>().pigs[spawnPointID] = pig;
         pig.GetComponent<Pig>().ID = spawnPointID;
         if (bottomPig)
         {
@@ -71,7 +71,7 @@ public class PigManager : MonoBehaviour {
             }
             this.GetComponent<GameObjectAdmin>().SoundManager.GetComponent<HandleSoundClips>().playnext = true;
             pig = Instantiate(pigPrefab, pigSpawnPositions[currentPigCount], rotation) as GameObject;
-            this.GetComponent<GameObjectAdmin>().pigs.Add(pig);
+            this.GetComponent<GameObjectAdmin>().pigs[currentPigCount] = pig;
             pig.GetComponent<Pig>().ID = currentPigCount;
             if (currentPigCount >= maxPigsRight)
             {

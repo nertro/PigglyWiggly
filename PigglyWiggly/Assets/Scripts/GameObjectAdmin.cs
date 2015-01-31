@@ -4,11 +4,12 @@ using System.Collections.Generic;
 
 public class GameObjectAdmin : MonoBehaviour {
 
-    public List<GameObject> pigs;
+    public GameObject[] pigs;
     public GameObject food;
     public GameObject pitchfork;
     public GameObject scoreLabel;
     public GameObject SoundManager;
+    public GameObject Farmer;
     int score;
 
     void Awake()

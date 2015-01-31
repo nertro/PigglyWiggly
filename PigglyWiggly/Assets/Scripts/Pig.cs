@@ -13,6 +13,7 @@ public class Pig : MonoBehaviour {
     float timer;
     float delay;
     float scaleBuffer;
+    bool dead;
 
     public bool pooping;
     public bool eating;
@@ -21,7 +22,6 @@ public class Pig : MonoBehaviour {
     public bool hasToPoo;
     public int ID;
     public bool bottomPig;
-    public Material mat;
 
 	void Start () {
         anim = this.GetComponent<Animator>();
@@ -44,14 +44,15 @@ public class Pig : MonoBehaviour {
 	void Update () {
         timer += Time.deltaTime;
         ChangeStates();
+        weight += 100;
     }
 
-    void Eat()
+    public void Eat()
     {
-        if (hunger != 0)
+        if (hunger > 0)
         {
             anim.SetBool("eating", true);
-            hunger--;
+            hunger-=2;
         }
         else
         {
@@ -60,7 +61,7 @@ public class Pig : MonoBehaviour {
         }
     }
 
-    void Poop()
+    public void Poop()
     {
         if (hunger > maxHunger/2)
         {
@@ -81,11 +82,11 @@ public class Pig : MonoBehaviour {
         {
             timer = 0;
 
-            if (eating)
+            if (eating &! dead)
             {
                 Eat();
             }
-            else if (pooping)
+            else if (pooping &! dead)
             {
                 Poop();
             }
@@ -93,7 +94,7 @@ public class Pig : MonoBehaviour {
             {
                 if (isDirty)
                 {
-                    sickness++;
+                    sickness += 5f;
                 }
                 HandleHunger();
                 HandlePigLife();
@@ -110,7 +111,7 @@ public class Pig : MonoBehaviour {
         {
             if (hunger == maxHunger)
             {
-                sickness++;
+                sickness += 0.5f;
             }
             else
             {
@@ -134,19 +135,31 @@ public class Pig : MonoBehaviour {
     {
         if (sickness >= maxSickness)
         {
-            Debug.Log("dead");
-            gameObjectAdmin.pigs.Remove(this.gameObject);
-            gameObjectAdmin.ChangeScore(-1);
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, false, bottomPig);
-            Destroy(this.gameObject);
+            if (dead)
+            {
+                Debug.Log("dead");
+                gameObjectAdmin.pigs[ID] = null;
+                gameObjectAdmin.ChangeScore(-1);
+                GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, false, bottomPig);
+                Destroy(this.gameObject);
+            }
+
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            dead = true;
         }
         else if (weight >= maxWeight)
         {
-            Debug.Log("slaughterhouse");
-            gameObjectAdmin.pigs.Remove(this.gameObject);
-            gameObjectAdmin.ChangeScore(2);
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, true, bottomPig);
-            Destroy(this.gameObject);
+            if (dead)
+            {
+                Debug.Log("slaughterhouse");
+                gameObjectAdmin.ChangeScore(2);
+                GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, true, bottomPig);
+                gameObjectAdmin.Farmer.GetComponent<FarmerSoundManager>().PlaySlaughterSound();
+                Destroy(this.gameObject);
+            }
+
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            dead = true;
         }
     }
 
