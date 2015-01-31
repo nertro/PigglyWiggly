@@ -16,6 +16,11 @@ public class HandleGameOver : MonoBehaviour {
 
 	void Update () {
 
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.LoadLevel("Start");
+        }
+
         secondsPassed = (int)Time.timeSinceLevelLoad % 60;
 
         secondsLeft = 60 - secondsPassed;

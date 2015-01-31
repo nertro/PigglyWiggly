@@ -33,6 +33,8 @@ public class GameObjectAdmin : MonoBehaviour {
             score = 0;
         }
         scoreLabel.GetComponent<UILabel>().text = score.ToString();
+
+        PlayerPrefs.SetInt("Score", score);
     }
 
     public void DrawTime(int minutes, int seconds)
