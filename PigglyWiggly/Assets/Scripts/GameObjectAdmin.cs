@@ -8,6 +8,7 @@ public class GameObjectAdmin : MonoBehaviour {
     public GameObject food;
     public GameObject pitchfork;
     public GameObject scoreLabel;
+    public GameObject timerLabel;
     public GameObject SoundManager;
     public GameObject Farmer;
     int score;
@@ -33,5 +34,22 @@ public class GameObjectAdmin : MonoBehaviour {
         }
         scoreLabel.GetComponent<UILabel>().text = score.ToString();
     }
-	
+
+    public void DrawTime(int minutes, int seconds)
+    {
+        if (seconds == 60)
+        {
+            seconds = 0;
+        }
+
+        if (seconds < 10)
+        {
+            timerLabel.GetComponent<UILabel>().text = minutes.ToString() + " : 0" + seconds.ToString();
+        }
+        else
+        {
+            timerLabel.GetComponent<UILabel>().text = minutes.ToString() + " : " + seconds.ToString();
+        }
+    }
+
 }

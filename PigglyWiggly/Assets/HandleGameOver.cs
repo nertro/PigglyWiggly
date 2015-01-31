@@ -3,13 +3,38 @@ using System.Collections;
 
 public class HandleGameOver : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
+    int minutesPassed, secondsPassed;
+    int minutesLeft, secondsLeft;
+    bool decreasedMinute;
+
+    void Start()
+    {
+        minutesLeft = 2;
+        secondsLeft = 60;
+        decreasedMinute = false;
+    }
+
 	void Update () {
-	
+
+        secondsPassed = (int)Time.timeSinceLevelLoad % 60;
+
+        secondsLeft = 60 - secondsPassed;
+
+        if (secondsLeft == 59 &! decreasedMinute)
+        {
+            minutesLeft--;
+            decreasedMinute = true;
+        }
+        else if(secondsLeft < 59)
+        {
+            decreasedMinute = false;
+        }
+
+        if (minutesLeft <= 0 && secondsLeft == 60)
+        {
+            Application.LoadLevel("GameOver");
+        }
+
+        this.GetComponent<GameObjectAdmin>().DrawTime(minutesLeft, secondsLeft);
 	}
 }
