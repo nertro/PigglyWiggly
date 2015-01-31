@@ -8,8 +8,8 @@ public class SelectPig : MonoBehaviour {
     int pigCountRight;
     public int currentPig;
     public UISprite icon;
-    public int gapDown;
-    public int gapLeft;
+    public float gapDown;
+    public float gapLeft;
 
     Vector3 iconTopRight;
     Vector3 iconBottom;
@@ -44,7 +44,7 @@ public class SelectPig : MonoBehaviour {
             }
             else
             {
-                icon.transform.position = new Vector3(iconBottom.x - (gapLeft * currentPig), iconBottom.y, iconBottom.z);
+                icon.transform.position = new Vector3(iconBottom.x - (gapLeft * (currentPig- pigCountRight)), iconBottom.y, iconBottom.z);
             }
             canPress = false;
         }
@@ -62,9 +62,15 @@ public class SelectPig : MonoBehaviour {
             {
                 icon.transform.position = new Vector3(iconTopRight.x, iconTopRight.y - (gapDown * currentPig), iconTopRight.z);
             }
+            else if (currentPig == pigCountRight)
+            {
+                iconBottom = icon.transform.position;
+                iconBottom -= new Vector3(0.7f, 0, 0);
+                icon.transform.position = iconBottom;
+            }
             else
             {
-                icon.transform.position = new Vector3(iconBottom.x - (gapLeft * currentPig), iconBottom.y, iconBottom.z);
+                icon.transform.position = new Vector3(iconBottom.x - (gapLeft * (currentPig- pigCountRight)), iconBottom.y, iconBottom.z);
             }
 
             canPress = false;
