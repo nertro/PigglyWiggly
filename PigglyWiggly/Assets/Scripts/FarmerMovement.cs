@@ -149,6 +149,7 @@ public class FarmerMovement : MonoBehaviour {
     {
         Debug.Log("Clean");
         objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>().isDirty = false;
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShowHidePoo>().ShowPoo(false, objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>().ID);
     }
 
     void MoveTo(Vector3 position)

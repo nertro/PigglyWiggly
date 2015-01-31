@@ -71,7 +71,7 @@ public class Pig : MonoBehaviour {
             hasFood = false;
             eating = false;
             hasToPoo = true;
-            weight+= 21;
+            weight+= 35;
             gameManager.GetComponent<ShowHideHay>().ShowHay(false, ID);
         }
     }
@@ -92,6 +92,7 @@ public class Pig : MonoBehaviour {
             pooping = false;
             isDirty = true;
             this.soundMngr.PlayDirtySound();
+            gameManager.GetComponent<ShowHidePoo>().ShowPoo(true, ID);
         }
     }
 
@@ -171,6 +172,7 @@ public class Pig : MonoBehaviour {
                 gameObjectAdmin.pigs[ID] = null;
                 gameObjectAdmin.ChangeScore(-1);
                 GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, false, bottomPig);
+                gameObjectAdmin.noteLabel.GetComponent<UILabel>().text = "";
                 Destroy(this.gameObject);
             }
 
@@ -178,6 +180,7 @@ public class Pig : MonoBehaviour {
             GameObject dieSound = Instantiate(dieSoundPrefab, Vector3.zero, Quaternion.identity) as GameObject;
             dieSound.GetComponent<pigDieSound>().PlaySickDeadSound();
             dead = true;
+            gameObjectAdmin.noteLabel.GetComponent<UILabel>().text = "Damn! It died from sickness!!";
         }
         else if (weight >= maxWeight)
         {
@@ -187,6 +190,7 @@ public class Pig : MonoBehaviour {
                 gameObjectAdmin.ChangeScore(2);
                 GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, true, bottomPig);
                 gameObjectAdmin.Farmer.GetComponent<FarmerSoundManager>().PlaySlaughterSound();
+                gameObjectAdmin.noteLabel.GetComponent<UILabel>().text = "";
                 Destroy(this.gameObject);
             }
 
@@ -194,6 +198,7 @@ public class Pig : MonoBehaviour {
             GameObject dieSound = Instantiate(dieSoundPrefab, Vector3.zero, Quaternion.identity) as GameObject;
             dieSound.GetComponent<pigDieSound>().PlaySlaughterSound();
             dead = true;
+            gameObjectAdmin.noteLabel.GetComponent<UILabel>().text = "Yeah! Off to the Slaughterhouse!!";
         }
     }
 

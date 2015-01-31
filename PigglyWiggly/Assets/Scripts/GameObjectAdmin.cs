@@ -11,6 +11,7 @@ public class GameObjectAdmin : MonoBehaviour {
     public GameObject timerLabel;
     public GameObject SoundManager;
     public GameObject Farmer;
+    public GameObject noteLabel;
     int score;
 
     void Awake()

@@ -7,6 +7,10 @@ public class ShowGameOverLabel : MonoBehaviour {
     public GameObject good;
     public GameObject amazing;
 
+    public AudioClip poorS;
+    public AudioClip goodS;
+    public AudioClip amazingS;
+
     public GameObject scoreLabel;
 
 	void Start () {
@@ -18,15 +22,20 @@ public class ShowGameOverLabel : MonoBehaviour {
         if (score < 10)
         {
             poor.SetActive(true);
+            audio.clip = poorS;
         }
         else if (score > 10 && score < 20)
         {
             good.SetActive(true);
+            audio.clip = goodS;
         }
         else if (score > 20)
         {
             amazing.SetActive(true);
+            audio.clip = amazingS;
         }
+
+        audio.Play();
 	}
 
     void Update()
