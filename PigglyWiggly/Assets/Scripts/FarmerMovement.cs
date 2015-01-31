@@ -13,6 +13,8 @@ public class FarmerMovement : MonoBehaviour {
     GameObject pigTakingCareOf;
     Animator anim;
 
+    int currentPig;
+
     enum Activities { Cleaning, Feeding, Idle, MoveToPitchfork, MoveToPig, MoveToFood };
     Activities currentActivity;
 
@@ -37,10 +39,12 @@ public class FarmerMovement : MonoBehaviour {
         }
         if (this.GetComponent<SelectPig>().currentPig < objectAdmin.pigs.Length)
         {
-            Pig pig = objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>();
-            if (pig)
+            
+            if (currentActivity == Activities.Idle)
             {
-                if (currentActivity == Activities.Idle)
+                currentPig = this.GetComponent<SelectPig>().currentPig;
+                Pig pig = objectAdmin.pigs[currentPig].GetComponent<Pig>();
+                if (pig)
                 {
                     if (Input.GetAxis("CleanPig") > 0 && pig.isDirty)
                     {
@@ -54,7 +58,7 @@ public class FarmerMovement : MonoBehaviour {
                         currentActivity = taskList[0];
                         DoTask();
                     }
-                    else if (Input.GetAxis("FeedPig") > 0 &! pig.hasFood &! pig.hasToPoo)
+                    else if (Input.GetAxis("FeedPig") > 0 &! pig.hasFood &! pig.eating &! pig.hasToPoo &! pig.pooping)
                     {
                         pigTakingCareOf = pig.gameObject;
 
@@ -120,7 +124,7 @@ public class FarmerMovement : MonoBehaviour {
         }
         else if(currentActivity == Activities.MoveToPig)
         {
-            MoveTo(objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].transform.position);
+            MoveTo(objectAdmin.pigs[currentPig].transform.position);
         }
         else if (currentActivity == Activities.MoveToPitchfork)
         {
@@ -140,16 +144,16 @@ public class FarmerMovement : MonoBehaviour {
     void Feed()
     {
         Debug.Log("Feed");
-        objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>().hasFood = true;
-        GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShowHideHay>().ShowHay(true, objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>().ID);
+        objectAdmin.pigs[currentPig].GetComponent<Pig>().hasFood = true;
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShowHideHay>().ShowHay(true, objectAdmin.pigs[currentPig].GetComponent<Pig>().ID);
         this.GetComponent<FarmerSoundManager>().PlayFeedSound();
     }
 
     void Clean()
     {
         Debug.Log("Clean");
-        objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>().isDirty = false;
-        GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShowHidePoo>().ShowPoo(false, objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>().ID);
+        objectAdmin.pigs[currentPig].GetComponent<Pig>().isDirty = false;
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShowHidePoo>().ShowPoo(false, objectAdmin.pigs[currentPig].GetComponent<Pig>().ID);
     }
 
     void MoveTo(Vector3 position)

@@ -172,15 +172,19 @@ public class Pig : MonoBehaviour {
                 gameObjectAdmin.pigs[ID] = null;
                 gameObjectAdmin.ChangeScore(-1);
                 GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, false, bottomPig);
-                gameObjectAdmin.noteLabel.GetComponent<UILabel>().text = "";
+                gameObjectAdmin.noteLabel.GetComponent<UILabel>().text = ".";
                 Destroy(this.gameObject);
             }
-
-            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-            GameObject dieSound = Instantiate(dieSoundPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-            dieSound.GetComponent<pigDieSound>().PlaySickDeadSound();
-            dead = true;
-            gameObjectAdmin.noteLabel.GetComponent<UILabel>().text = "Damn! It died from sickness!!";
+            else
+            {
+                GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                GameObject dieSound = Instantiate(dieSoundPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+                dieSound.GetComponent<pigDieSound>().PlaySickDeadSound();
+                dead = true;
+                gameObjectAdmin.noteLabel.GetComponent<UILabel>().text = "Damn! It died from sickness!!";
+                gameManager.GetComponent<ShowHideHay>().ShowHay(false, ID);
+                gameManager.GetComponent<ShowHidePoo>().ShowPoo(false, ID);
+            }
         }
         else if (weight >= maxWeight)
         {
@@ -190,15 +194,19 @@ public class Pig : MonoBehaviour {
                 gameObjectAdmin.ChangeScore(2);
                 GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigManager>().SpawnPig(ID, true, bottomPig);
                 gameObjectAdmin.Farmer.GetComponent<FarmerSoundManager>().PlaySlaughterSound();
-                gameObjectAdmin.noteLabel.GetComponent<UILabel>().text = "";
+                gameObjectAdmin.noteLabel.GetComponent<UILabel>().text = ".";
                 Destroy(this.gameObject);
             }
-
-            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-            GameObject dieSound = Instantiate(dieSoundPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-            dieSound.GetComponent<pigDieSound>().PlaySlaughterSound();
-            dead = true;
-            gameObjectAdmin.noteLabel.GetComponent<UILabel>().text = "Yeah! Off to the Slaughterhouse!!";
+            else
+            {
+                GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                GameObject dieSound = Instantiate(dieSoundPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+                dieSound.GetComponent<pigDieSound>().PlaySlaughterSound();
+                dead = true;
+                gameObjectAdmin.noteLabel.GetComponent<UILabel>().text = "Yeah! Off to the Slaughterhouse!!";
+                gameManager.GetComponent<ShowHideHay>().ShowHay(false, ID);
+                gameManager.GetComponent<ShowHidePoo>().ShowPoo(false, ID);
+            }
         }
     }
 

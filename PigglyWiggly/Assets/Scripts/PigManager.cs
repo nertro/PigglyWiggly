@@ -35,7 +35,7 @@ public class PigManager : MonoBehaviour {
         this.GetComponent<GameObjectAdmin>().pigs = new GameObject[maxPigsRight + maxPigsBottom];
 
         currentPigCount = 1;
-        SpawnPig(0, false, false);
+        SpawnPig(0, true, false);
 	}
 
     public void SpawnPig(int spawnPointID, bool spawnTwo, bool bottomPig)
