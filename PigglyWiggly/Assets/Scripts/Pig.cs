@@ -6,6 +6,7 @@ public class Pig : MonoBehaviour {
     GameObjectAdmin gameObjectAdmin;
     PigLook pigLook;
     Animator anim;
+    PigSoundManager soundMngr;
 
     int hunger, weight;
     float sickness;
@@ -22,9 +23,15 @@ public class Pig : MonoBehaviour {
     public bool hasToPoo;
     public int ID;
     public bool bottomPig;
+    public GameObject dieSoundPrefab;
+
+    public int hungerIncrease;
+    public float sicknessIncrease;
+    public int weightIncrease;
 
 	void Start () {
         anim = this.GetComponent<Animator>();
+        soundMngr = this.GetComponent<PigSoundManager>();
         gameObjectAdmin = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameObjectAdmin>();
         pigLook = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigLook>();
         hunger = 5;
@@ -44,7 +51,6 @@ public class Pig : MonoBehaviour {
 	void Update () {
         timer += Time.deltaTime;
         ChangeStates();
-        weight += 100;
     }
 
     public void Eat()
@@ -52,27 +58,34 @@ public class Pig : MonoBehaviour {
         if (hunger > 0)
         {
             anim.SetBool("eating", true);
-            hunger-=2;
+            soundMngr.PlayEatSound();
+            hunger-=hungerIncrease;
         }
         else
         {
             anim.SetBool("eating", false);
+            this.audio.Stop();
+            hasFood = false;
             eating = false;
         }
     }
 
     public void Poop()
     {
-        if (hunger > maxHunger/2)
+        if (hunger < maxHunger/2)
         {
             anim.SetBool("pooping", true);
-            hunger+=2;
+            soundMngr.PlayPoopSound();
+            hasToPoo = false;
+            hunger+=hungerIncrease;
         }
         else
         {
             anim.SetBool("pooping", false);
+            this.audio.Stop();
             pooping = false;
             isDirty = true;
+            this.soundMngr.PlayDirtySound();
         }
     }
 
@@ -94,38 +107,51 @@ public class Pig : MonoBehaviour {
             {
                 if (isDirty)
                 {
-                    sickness += 5f;
+                    sickness += sicknessIncrease;
                 }
                 HandleHunger();
                 HandlePigLife();
             }
 
+            //if (sickness > maxSickness/2)
+            //{
+            //    soundMngr.PlaySickSound();
+            //}
+
+            if (!isDirty && soundMngr.dirtySource.isPlaying)
+            {
+                soundMngr.dirtySource.Stop();
+            }
+
             GetComponentInChildren<SkinnedMeshRenderer>().material.SetTexture(0, pigLook.ChangePigLook(isDirty, hunger, sickness));
-            //mat.SetTexture(0, pigLook.ChangePigLook(isDirty, hunger, sickness));
         }
     }
 
     void HandleHunger()
     {
-        if (hunger != 0)
+        if (hunger > 0)
         {
+            //hasToPoo = false;
+
             if (hunger == maxHunger)
             {
-                sickness += 0.5f;
+                sickness += sicknessIncrease;
+                soundMngr.PlayHungrySound();
             }
             else
             {
                 if (sickness > 0)
                 {
-                    sickness -= 0.5f;   
+                    sickness -= sicknessIncrease;   
                 }
-                hunger++;
+                hunger+= hungerIncrease;
             }
         }
         else
         {
-            sickness++;
-            weight+=20;
+            soundMngr.PlayFartSound();
+            sickness += sicknessIncrease;
+            weight+=weightIncrease;
             HandleWeight();
             hasToPoo = true;
         }
@@ -145,6 +171,8 @@ public class Pig : MonoBehaviour {
             }
 
             GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            GameObject dieSound = Instantiate(dieSoundPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+            dieSound.GetComponent<pigDieSound>().PlaySickDeadSound();
             dead = true;
         }
         else if (weight >= maxWeight)
@@ -159,6 +187,8 @@ public class Pig : MonoBehaviour {
             }
 
             GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            GameObject dieSound = Instantiate(dieSoundPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+            dieSound.GetComponent<pigDieSound>().PlaySlaughterSound();
             dead = true;
         }
     }
@@ -199,6 +229,7 @@ public class Pig : MonoBehaviour {
 
     void GetBigger()
     {
+        soundMngr.PlayGrowSound();
         this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * scaleBuffer, gameObject.transform.localScale.y * scaleBuffer, gameObject.transform.localScale.z * scaleBuffer);
         scaleBuffer -= 0.25f;
         this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x / scaleBuffer, gameObject.transform.localScale.y / scaleBuffer, gameObject.transform.localScale.z / scaleBuffer);
