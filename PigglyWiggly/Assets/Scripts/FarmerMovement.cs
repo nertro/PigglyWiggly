@@ -54,7 +54,7 @@ public class FarmerMovement : MonoBehaviour {
                         currentActivity = taskList[0];
                         DoTask();
                     }
-                    else if (Input.GetAxis("FeedPig") > 0 & !pig.hasFood)
+                    else if (Input.GetAxis("FeedPig") > 0 &! pig.hasFood &! pig.hasToPoo)
                     {
                         pigTakingCareOf = pig.gameObject;
 
@@ -141,6 +141,7 @@ public class FarmerMovement : MonoBehaviour {
     {
         Debug.Log("Feed");
         objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>().hasFood = true;
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShowHideHay>().ShowHay(true, objectAdmin.pigs[this.GetComponent<SelectPig>().currentPig].GetComponent<Pig>().ID);
         this.GetComponent<FarmerSoundManager>().PlayFeedSound();
     }
 

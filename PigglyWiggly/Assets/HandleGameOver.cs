@@ -9,7 +9,7 @@ public class HandleGameOver : MonoBehaviour {
 
     void Start()
     {
-        minutesLeft = 2;
+        minutesLeft = 5;
         secondsLeft = 60;
         decreasedMinute = false;
     }

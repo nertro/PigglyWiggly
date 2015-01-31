@@ -7,6 +7,7 @@ public class Pig : MonoBehaviour {
     PigLook pigLook;
     Animator anim;
     PigSoundManager soundMngr;
+    GameObject gameManager;
 
     int hunger, weight;
     float sickness;
@@ -34,12 +35,13 @@ public class Pig : MonoBehaviour {
         soundMngr = this.GetComponent<PigSoundManager>();
         gameObjectAdmin = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameObjectAdmin>();
         pigLook = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PigLook>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
         hunger = 5;
         weight = 0;
         sickness = 0;
         maxHunger = 10;
         maxSickness = 10;
-        maxWeight = 500;
+        maxWeight = 100;
         timer = 0;
         delay = 2;
         pooping = hasFood = eating = isDirty = false;
@@ -60,6 +62,7 @@ public class Pig : MonoBehaviour {
             anim.SetBool("eating", true);
             soundMngr.PlayEatSound();
             hunger-=hungerIncrease;
+            gameManager.GetComponent<ShowHideHay>().ChangeHayTexture(hunger, ID);
         }
         else
         {
@@ -67,6 +70,9 @@ public class Pig : MonoBehaviour {
             this.audio.Stop();
             hasFood = false;
             eating = false;
+            hasToPoo = true;
+            weight+= 21;
+            gameManager.GetComponent<ShowHideHay>().ShowHay(false, ID);
         }
     }
 
@@ -151,9 +157,7 @@ public class Pig : MonoBehaviour {
         {
             soundMngr.PlayFartSound();
             sickness += sicknessIncrease;
-            weight+=weightIncrease;
             HandleWeight();
-            hasToPoo = true;
         }
     }
 
@@ -195,24 +199,24 @@ public class Pig : MonoBehaviour {
 
     void HandleWeight()
     {
-        if (weight <= (maxWeight * 20)/100 && scaleBuffer != 2)
+        if (weight < (maxWeight * 20)/100 && scaleBuffer != 2)
         {
             scaleBuffer = 2;
             this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x / scaleBuffer, gameObject.transform.localScale.y / scaleBuffer, gameObject.transform.localScale.z / scaleBuffer);
         }
-        else if (weight <= (maxWeight * 40) / 100 && weight > (maxWeight * 20) / 100 && scaleBuffer != 1.75f)
+        else if (weight < (maxWeight * 40) / 100 && weight >= (maxWeight * 20) / 100 && scaleBuffer != 1.75f)
         {
             GetBigger();
         }
-        else if (weight <= (maxWeight * 60) / 100 && weight > (maxWeight * 40) / 100 && scaleBuffer != 1.5)
+        else if (weight < (maxWeight * 60) / 100 && weight >= (maxWeight * 40) / 100 && scaleBuffer != 1.5)
 	    {
             GetBigger();
         }
-        else if (weight <= (maxWeight * 80) / 100 && weight > (maxWeight * 60) / 100 && scaleBuffer != 1.25f)
+        else if (weight < (maxWeight * 80) / 100 && weight >= (maxWeight * 60) / 100 && scaleBuffer != 1.25f)
         {
             GetBigger();    
         }
-        else if (weight <= (maxWeight * 90) / 100 && weight > (maxWeight * 80) / 100 && scaleBuffer != 1.1f)
+        else if (weight < (maxWeight * 90) / 100 && weight >= (maxWeight * 80) / 100 && scaleBuffer != 1.1f)
         {
             this.gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * scaleBuffer, gameObject.transform.localScale.y * scaleBuffer, gameObject.transform.localScale.z * scaleBuffer);
             scaleBuffer = 1.1f;
